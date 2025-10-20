@@ -1,0 +1,205 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* SafeBridge 브랜드 컬러 팔레트 */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    /* 안전을 상징하는 블루-그린 그라데이션 */
+    --primary: 210 100% 50%; /* 안전한 파란색 */
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 210 100% 60%;
+
+    --secondary: 142 76% 36%; /* 자연을 상징하는 녹색 */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 142 76% 36%; /* 농업/어업 테마 녹색 */
+    --accent-foreground: 0 0% 100%;
+
+    /* 위험도별 컬러 시스템 */
+    --destructive: 0 84.2% 60.2%; /* 위험 (빨간색) */
+    --destructive-foreground: 210 40% 98%;
+    
+    --warning: 38 92% 50%; /* 주의 (주황색) */
+    --warning-foreground: 0 0% 100%;
+    
+    --success: 142 76% 36%; /* 안전 (녹색) */
+    --success-foreground: 0 0% 100%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 210 100% 50%; /* primary 색상과 일치 */
+
+    --radius: 0.5rem;
+
+    /* SafeBridge 그라데이션 */
+    --gradient-primary: linear-gradient(135deg, hsl(210 100% 50%), hsl(142 76% 36%));
+    --gradient-safety: linear-gradient(180deg, hsl(210 100% 95%), hsl(142 76% 95%));
+    
+    /* 그림자 효과 */
+    --shadow-safety: 0 10px 30px -10px hsl(210 100% 50% / 0.3);
+    --shadow-glow: 0 0 40px hsl(210 100% 60% / 0.4);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 210 100% 50%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 210 100% 50%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    min-height: 100vh;
+    min-height: 100dvh; /* 모바일 뷰포트 높이 지원 */
+  }
+
+  html {
+    height: 100%;
+    height: 100dvh; /* 모바일 뷰포트 높이 지원 */
+  }
+
+  #root {
+    min-height: 100vh;
+    min-height: 100dvh; /* 모바일 뷰포트 높이 지원 */
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* SafeBridge 커스텀 컴포넌트 스타일 */
+@layer components {
+  .safety-gradient {
+    background: var(--gradient-primary);
+  }
+  
+  .safety-shadow {
+    box-shadow: var(--shadow-safety);
+  }
+  
+  .safety-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .risk-level-1 {
+    @apply bg-green-500 text-white;
+  }
+  
+  .risk-level-2 {
+    @apply bg-blue-500 text-white;
+  }
+  
+  .risk-level-3 {
+    @apply bg-yellow-500 text-white;
+  }
+  
+  .risk-level-4 {
+    @apply bg-orange-500 text-white;
+  }
+  
+  .risk-level-5 {
+    @apply bg-red-500 text-white;
+  }
+
+  /* 모바일 반응형 개선 */
+  .mobile-container {
+    @apply w-full min-h-screen;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  .mobile-header {
+    @apply w-full flex-shrink-0;
+  }
+
+  .mobile-content {
+    @apply flex-1 w-full overflow-auto;
+    min-height: 0; /* flexbox 오버플로우 해결 */
+  }
+
+  /* 버튼 클릭 시 크기 변화 방지 */
+  .stable-button {
+    @apply transition-colors duration-200;
+    transform: none !important;
+    will-change: background-color, border-color, color;
+  }
+
+  .stable-button:active {
+    transform: none !important;
+    scale: none !important;
+  }
+
+  /* 모바일 터치 개선 */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+
+  /* 스크롤 개선 */
+  .smooth-scroll {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+}
